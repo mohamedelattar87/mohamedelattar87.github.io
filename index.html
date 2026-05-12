@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>محمد العطار | Mohamed Elattar</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230B1120'/><rect x='8' y='8' width='48' height='48' rx='8' fill='%23111827' stroke='%230EA5E9' stroke-width='1.5'/><line x1='16' y1='22' x2='48' y2='22' stroke='%230EA5E9' stroke-width='1.5' stroke-linecap='round'/><line x1='16' y1='32' x2='40' y2='32' stroke='%2338BDF8' stroke-width='1.2' stroke-linecap='round'/><line x1='16' y1='42' x2='36' y2='42' stroke='%2338BDF8' stroke-width='1.2' stroke-linecap='round'/><circle cx='46' cy='42' r='8' fill='%230B1120' stroke='%23F59E0B' stroke-width='1.5'/><line x1='43' y1='42' x2='49' y2='42' stroke='%23F59E0B' stroke-width='1.5' stroke-linecap='round'/><line x1='46' y1='39' x2='46' y2='45' stroke='%23F59E0B' stroke-width='1.5' stroke-linecap='round'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -31,6 +32,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 .hero{min-height:100vh;display:flex;align-items:center;padding:9rem 5rem 5rem;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(14,165,233,0.07) 0%,transparent 60%),radial-gradient(ellipse at 5% 80%,rgba(245,158,11,0.05) 0%,transparent 50%);pointer-events:none}
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.6}
+body > *:not(#bg-canvas){position:relative;z-index:1}
 .hero-grid{display:grid;grid-template-columns:1fr 300px;gap:6rem;align-items:center;max-width:1200px;margin:0 auto;width:100%}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:0.7rem;font-size:0.95rem;font-weight:600;color:var(--teal2);margin-bottom:1.4rem;letter-spacing:0.04em}
 .hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--teal);border-radius:2px}
@@ -173,6 +176,8 @@ body.en .hero-stats .stat:last-child{border:none}
 </style>
 </head>
 <body>
+
+<canvas id="bg-canvas"></canvas>
 
 <nav>
   <a href="#" class="nav-logo">محمد <span>العطار</span></a>
@@ -345,12 +350,12 @@ body.en .hero-stats .stat:last-child{border:none}
           <a href="https://www.linkedin.com/in/mohammed-elattar" target="_blank" class="contact-item"><div class="ci-icon">💼</div><span>linkedin.com/in/mohammed-elattar</span></a>
         </div>
       </div>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-group"><label data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label><input type="text" placeholder="اكتب اسمك هنا"></div>
-        <div class="form-group"><label data-ar="البريد الإلكتروني" data-en="Email Address">البريد الإلكتروني</label><input type="email" placeholder="your@email.com" dir="ltr"></div>
-        <div class="form-group"><label data-ar="الموضوع" data-en="Subject">الموضوع</label><input type="text" placeholder="ما الذي تحتاج المساعدة فيه؟"></div>
-        <div class="form-group"><label data-ar="الرسالة" data-en="Message">الرسالة</label><textarea placeholder="اكتب رسالتك بالتفصيل..."></textarea></div>
-        <button type="submit" class="btn-primary" style="width:100%" data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</button>
+      <form class="contact-form" id="contactForm">
+        <div class="form-group"><label data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label><input type="text" name="name" placeholder="اكتب اسمك هنا" required></div>
+        <div class="form-group"><label data-ar="البريد الإلكتروني" data-en="Email Address">البريد الإلكتروني</label><input type="email" name="email" placeholder="your@email.com" dir="ltr" required></div>
+        <div class="form-group"><label data-ar="الموضوع" data-en="Subject">الموضوع</label><input type="text" name="subject" placeholder="ما الذي تحتاج المساعدة فيه؟"></div>
+        <div class="form-group"><label data-ar="الرسالة" data-en="Message">الرسالة</label><textarea name="message" placeholder="اكتب رسالتك بالتفصيل..." required></textarea></div>
+        <button type="submit" class="btn-primary" style="width:100%" id="submitBtn" data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</button>
       </form>
     </div>
   </div>
@@ -370,14 +375,361 @@ body.en .hero-stats .stat:last-child{border:none}
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:0.1});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 
-function handleSubmit(e){
+// CONTACT FORM — AJAX (no page redirect)
+document.getElementById('contactForm').addEventListener('submit', async function(e){
   e.preventDefault();
-  const btn=e.target.querySelector('button[type="submit"]');
-  const orig=btn.getAttribute('data-ar')||btn.textContent;
-  btn.textContent='✓ تم الإرسال بنجاح';
-  btn.style.background='#059669';
-  setTimeout(()=>{btn.textContent=orig;btn.style.background='';e.target.reset();},3000);
-}
+  const btn = document.getElementById('submitBtn');
+  const form = this;
+
+  // Show loading
+  btn.textContent = '⟳ جارٍ الإرسال...';
+  btn.disabled = true;
+  btn.style.opacity = '0.75';
+
+  try {
+    const res = await fetch('https://formspree.io/f/xbdwwnov', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if(res.ok){
+      // Success
+      btn.textContent = '✓ تم الإرسال بنجاح — سيصلك رد قريباً!';
+      btn.style.background = '#059669';
+      btn.style.opacity = '1';
+      form.reset();
+      setTimeout(()=>{
+        btn.textContent = isEn ? 'Send Message' : 'إرسال الرسالة';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 4000);
+    } else {
+      throw new Error('فشل الإرسال');
+    }
+  } catch(err){
+    btn.textContent = '✗ حدث خطأ — حاول مرة أخرى';
+    btn.style.background = '#DC2626';
+    btn.style.opacity = '1';
+    btn.disabled = false;
+    setTimeout(()=>{
+      btn.textContent = isEn ? 'Send Message' : 'إرسال الرسالة';
+      btn.style.background = '';
+    }, 3000);
+  }
+});
+
+// PROFESSIONAL FINANCIAL BACKGROUND
+(function(){
+  const canvas=document.getElementById('bg-canvas');
+  const ctx=canvas.getContext('2d');
+  let W,H,raf;
+
+  function resize(){
+    W=canvas.width=window.innerWidth;
+    H=canvas.height=window.innerHeight;
+  }
+
+  // Candlestick chart data
+  const candles=Array.from({length:18},(_,i)=>({
+    x:0, open:0, close:0, high:0, low:0,
+    bull:Math.random()>0.45
+  }));
+
+  // Line chart points
+  const linePoints1=Array.from({length:30},()=>({y:0,vy:0}));
+  const linePoints2=Array.from({length:30},()=>({y:0,vy:0}));
+  let lineTime=0;
+
+  // Pie chart
+  const pieData=[
+    {val:0.35,color:'rgba(14,165,233,'},
+    {val:0.25,color:'rgba(245,158,11,'},
+    {val:0.22,color:'rgba(56,189,248,'},
+    {val:0.18,color:'rgba(125,211,252,'}
+  ];
+
+  // Bar chart
+  const bars=Array.from({length:8},()=>({h:Math.random()*0.7+0.2,color:Math.random()>0.5}));
+
+  // Floating numbers/formulas
+  const floats=Array.from({length:28},()=>({
+    x:Math.random()*2000,y:Math.random()*1200,
+    vx:(Math.random()-0.5)*0.25,vy:(Math.random()-0.5)*0.25,
+    text:['12,450','(3.2%)','EBITDA','ROE','NPV','IRR','CAGR','P/E','7,830','15.4%','∑','=SUM','FCF','DCF','EPS','WACC','▲4.2%','▼1.8%','2,950','18.6%','KPI','VAT','﷼','$','%','≈','∞','▲'][Math.floor(Math.random()*28)],
+    size:Math.random()*8+11,
+    alpha:Math.random()*0.14+0.07,
+    color:Math.random()>0.6?'rgba(245,158,11,':'rgba(14,165,233,'
+  }));
+
+  // Grid dots
+  function drawDotGrid(){
+    ctx.fillStyle='rgba(14,165,233,0.13)';
+    const sp=55;
+    for(let x=0;x<W;x+=sp)
+      for(let y=0;y<H;y+=sp){
+        ctx.beginPath();
+        ctx.arc(x,y,1.2,0,Math.PI*2);
+        ctx.fill();
+      }
+  }
+
+  // Candlestick chart
+  function drawCandlesticks(ox,oy,cw,ch){
+    ctx.save();
+    ctx.translate(ox,oy);
+    // axes
+    ctx.strokeStyle='rgba(56,189,248,0.15)';
+    ctx.lineWidth=0.8;
+    ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,ch);ctx.lineTo(cw,ch);ctx.stroke();
+    // horizontal grid lines
+    for(let i=1;i<4;i++){
+      ctx.beginPath();
+      ctx.strokeStyle='rgba(56,189,248,0.07)';
+      ctx.moveTo(0,ch*i/4);ctx.lineTo(cw,ch*i/4);ctx.stroke();
+    }
+    const bw=cw/candles.length;
+    candles.forEach((c,i)=>{
+      const x=i*bw+bw*0.5;
+      const openY=c.open*ch;
+      const closeY=c.close*ch;
+      const highY=c.high*ch;
+      const lowY=c.low*ch;
+      const col=c.bull?'rgba(52,211,153,':'rgba(248,113,113,';
+      ctx.strokeStyle=col+'0.5)';
+      ctx.fillStyle=col+'0.3)';
+      ctx.lineWidth=0.8;
+      ctx.beginPath();ctx.moveTo(x,highY);ctx.lineTo(x,lowY);ctx.stroke();
+      const bodyH=Math.abs(closeY-openY)||2;
+      const bodyY=Math.min(openY,closeY);
+      ctx.fillRect(x-bw*0.28,bodyY,bw*0.56,bodyH);
+      ctx.strokeRect(x-bw*0.28,bodyY,bw*0.56,bodyH);
+    });
+    // Label
+    ctx.fillStyle='rgba(56,189,248,0.25)';
+    ctx.font='bold 9px Arial';
+    ctx.fillText('PRICE CHART',4,12);
+    ctx.restore();
+  }
+
+  // Line chart
+  function drawLineChart(ox,oy,cw,ch){
+    ctx.save();
+    ctx.translate(ox,oy);
+    ctx.strokeStyle='rgba(56,189,248,0.12)';
+    ctx.lineWidth=0.8;
+    ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,ch);ctx.lineTo(cw,ch);ctx.stroke();
+    for(let i=1;i<4;i++){
+      ctx.strokeStyle='rgba(56,189,248,0.06)';
+      ctx.beginPath();ctx.moveTo(0,ch*i/4);ctx.lineTo(cw,ch*i/4);ctx.stroke();
+    }
+    const step=cw/(linePoints1.length-1);
+    // Line 1
+    ctx.beginPath();
+    linePoints1.forEach((p,i)=>{i===0?ctx.moveTo(i*step,p.y*ch):ctx.lineTo(i*step,p.y*ch)});
+    ctx.strokeStyle='rgba(14,165,233,0.35)';ctx.lineWidth=1.5;ctx.stroke();
+    // Fill
+    ctx.lineTo((linePoints1.length-1)*step,ch);ctx.lineTo(0,ch);ctx.closePath();
+    ctx.fillStyle='rgba(14,165,233,0.05)';ctx.fill();
+    // Line 2
+    ctx.beginPath();
+    linePoints2.forEach((p,i)=>{i===0?ctx.moveTo(i*step,p.y*ch):ctx.lineTo(i*step,p.y*ch)});
+    ctx.strokeStyle='rgba(245,158,11,0.3)';ctx.lineWidth=1;ctx.stroke();
+    ctx.fillStyle='rgba(56,189,248,0.2)';
+    ctx.font='bold 9px Arial';
+    ctx.fillText('TREND ANALYSIS',4,12);
+    ctx.restore();
+  }
+
+  // Bar chart
+  function drawBarChart(ox,oy,cw,ch){
+    ctx.save();
+    ctx.translate(ox,oy);
+    ctx.strokeStyle='rgba(56,189,248,0.12)';
+    ctx.lineWidth=0.8;
+    ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,ch);ctx.lineTo(cw,ch);ctx.stroke();
+    for(let i=1;i<4;i++){
+      ctx.strokeStyle='rgba(56,189,248,0.06)';
+      ctx.beginPath();ctx.moveTo(0,ch*i/4);ctx.lineTo(cw,ch*i/4);ctx.stroke();
+    }
+    const bw=cw/bars.length;
+    bars.forEach((b,i)=>{
+      const bh=b.h*ch*0.85;
+      const col=b.color?'rgba(14,165,233,':'rgba(245,158,11,';
+      ctx.fillStyle=col+'0.22)';
+      ctx.strokeStyle=col+'0.45)';
+      ctx.lineWidth=0.8;
+      ctx.fillRect(i*bw+bw*0.15,ch-bh,bw*0.7,bh);
+      ctx.strokeRect(i*bw+bw*0.15,ch-bh,bw*0.7,bh);
+    });
+    ctx.fillStyle='rgba(56,189,248,0.25)';
+    ctx.font='bold 9px Arial';
+    ctx.fillText('REVENUE ANALYSIS',4,12);
+    ctx.restore();
+  }
+
+  // Pie chart
+  function drawPieChart(ox,oy,r){
+    ctx.save();
+    ctx.translate(ox,oy);
+    let start=-Math.PI/2;
+    pieData.forEach(d=>{
+      const end=start+d.val*Math.PI*2;
+      ctx.beginPath();ctx.moveTo(0,0);
+      ctx.arc(0,0,r,start,end);ctx.closePath();
+      ctx.fillStyle=d.color+'0.18)';
+      ctx.strokeStyle=d.color+'0.45)';
+      ctx.lineWidth=0.8;
+      ctx.fill();ctx.stroke();
+      start=end;
+    });
+    ctx.strokeStyle='rgba(56,189,248,0.12)';
+    ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.stroke();
+    ctx.fillStyle='rgba(56,189,248,0.25)';
+    ctx.font='bold 9px Arial';
+    ctx.textAlign='center';
+    ctx.fillText('PORTFOLIO',0,r+14);
+    ctx.restore();
+  }
+
+  // KPI boxes
+  function drawKPI(ox,oy){
+    ctx.save();
+    ctx.translate(ox,oy);
+    const kpis=[
+      {label:'ROE',val:'18.4%',up:true},
+      {label:'NPV',val:'4.2M',up:true},
+      {label:'EBITDA',val:'12.8%',up:false},
+      {label:'IRR',val:'22.1%',up:true},
+    ];
+    kpis.forEach((k,i)=>{
+      const kx=(i%2)*85, ky=Math.floor(i/2)*55;
+      ctx.strokeStyle='rgba(14,165,233,0.18)';
+      ctx.fillStyle='rgba(14,165,233,0.05)';
+      ctx.lineWidth=0.8;
+      ctx.beginPath();ctx.roundRect(kx,ky,78,46,4);ctx.fill();ctx.stroke();
+      ctx.fillStyle='rgba(56,189,248,0.3)';
+      ctx.font='bold 8px Arial';
+      ctx.textAlign='left';
+      ctx.fillText(k.label,kx+6,ky+15);
+      ctx.fillStyle=k.up?'rgba(52,211,153,0.55)':'rgba(248,113,113,0.55)';
+      ctx.font='bold 11px Arial';
+      ctx.fillText((k.up?'▲ ':'▼ ')+k.val,kx+6,ky+35);
+    });
+    ctx.restore();
+  }
+
+  // Balance sheet lines
+  function drawBalanceSheet(ox,oy,bw,bh){
+    ctx.save();
+    ctx.translate(ox,oy);
+    ctx.strokeStyle='rgba(14,165,233,0.18)';
+    ctx.fillStyle='rgba(14,165,233,0.04)';
+    ctx.lineWidth=0.8;
+    ctx.beginPath();ctx.roundRect(0,0,bw,bh,6);ctx.fill();ctx.stroke();
+    ctx.fillStyle='rgba(56,189,248,0.3)';
+    ctx.font='bold 9px Arial';
+    ctx.fillText('BALANCE SHEET',8,16);
+    const rows=['Assets','Liabilities','Equity','Revenue','Expenses'];
+    const vals=['120,500','45,200','75,300','38,400','22,100'];
+    rows.forEach((r,i)=>{
+      ctx.fillStyle='rgba(148,163,184,0.25)';
+      ctx.font='8px Arial';
+      ctx.fillText(r,8,32+i*14);
+      ctx.fillStyle='rgba(14,165,233,0.35)';
+      ctx.textAlign='right';
+      ctx.fillText(vals[i],bw-8,32+i*14);
+      ctx.textAlign='left';
+      if(i<rows.length-1){
+        ctx.strokeStyle='rgba(56,189,248,0.08)';
+        ctx.beginPath();ctx.moveTo(6,37+i*14);ctx.lineTo(bw-6,37+i*14);ctx.stroke();
+      }
+    });
+    ctx.restore();
+  }
+
+  function updateData(){
+    lineTime+=0.012;
+    linePoints1.forEach((p,i)=>{
+      p.y=0.2+0.3*Math.sin(lineTime+i*0.4)+0.15*Math.sin(lineTime*1.7+i*0.2);
+      p.y=Math.max(0.05,Math.min(0.92,p.y));
+    });
+    linePoints2.forEach((p,i)=>{
+      p.y=0.5+0.25*Math.cos(lineTime*0.8+i*0.35)+0.1*Math.sin(lineTime*2.1+i*0.3);
+      p.y=Math.max(0.05,Math.min(0.92,p.y));
+    });
+    if(Math.floor(lineTime*10)%40===0){
+      candles.forEach(c=>{
+        const base=Math.random()*0.5+0.15;
+        const range=Math.random()*0.25+0.05;
+        c.bull=Math.random()>0.45;
+        c.open=base; c.close=base+(c.bull?range:-range)*Math.random();
+        c.high=Math.max(c.open,c.close)+Math.random()*0.08;
+        c.low=Math.min(c.open,c.close)-Math.random()*0.08;
+        c.open=Math.max(0.05,Math.min(0.92,c.open));
+        c.close=Math.max(0.05,Math.min(0.92,c.close));
+        c.high=Math.max(0.02,Math.min(0.97,c.high));
+        c.low=Math.max(0.02,Math.min(0.97,c.low));
+      });
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    drawDotGrid();
+
+    const m=Math.min(W,H);
+
+    // TOP ROW
+    drawCandlesticks(W*0.03, H*0.07, W*0.24, H*0.2);
+    drawLineChart(W*0.38, H*0.04, W*0.26, H*0.18);
+    drawBarChart(W*0.74, H*0.06, W*0.23, H*0.2);
+
+    // MIDDLE ROW
+    drawKPI(W*0.03, H*0.38);
+    drawPieChart(W*0.28, H*0.52, m*0.07);
+    drawBalanceSheet(W*0.46, H*0.36, 195, 130);
+    drawBarChart(W*0.75, H*0.36, W*0.2, H*0.16);
+
+    // BOTTOM ROW
+    drawLineChart(W*0.02, H*0.68, W*0.24, H*0.2);
+    drawCandlesticks(W*0.35, H*0.7, W*0.24, H*0.2);
+    drawKPI(W*0.72, H*0.68);
+    drawPieChart(W*0.93, H*0.35, m*0.05);
+
+    // Extra small elements
+    drawBalanceSheet(W*0.01, H*0.22, 155, 100);
+    drawCandlesticks(W*0.73, H*0.54, W*0.18, H*0.12);
+
+    // Floating text
+    floats.forEach(f=>{
+      f.x+=f.vx; f.y+=f.vy;
+      if(f.x<-60)f.x=W+60; if(f.x>W+60)f.x=-60;
+      if(f.y<-20)f.y=H+20; if(f.y>H+20)f.y=-20;
+      ctx.fillStyle=f.color+f.alpha+')';
+      ctx.font=`${f.size}px 'Courier New', monospace`;
+      ctx.textAlign='left';
+      ctx.fillText(f.text,f.x,f.y);
+    });
+
+    updateData();
+    raf=requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize',()=>{resize();});
+  resize();
+  // Init candlestick data
+  candles.forEach(c=>{
+    const base=Math.random()*0.5+0.15;
+    const range=Math.random()*0.2+0.05;
+    c.bull=Math.random()>0.45;
+    c.open=base; c.close=base+(c.bull?range:-range)*Math.random();
+    c.high=Math.max(c.open,c.close)+Math.random()*0.07;
+    c.low=Math.min(c.open,c.close)-Math.random()*0.07;
+  });
+  draw();
+})();
 
 let isEn=false;
 function toggleLang(){
