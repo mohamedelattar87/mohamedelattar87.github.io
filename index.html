@@ -3,355 +3,401 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>محمد العطار | قائد مالي</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>محمد العطار | Mohamed Elattar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dark:#8B6914;
-  --dark:#0C0C0C;--dark2:#141414;--dark3:#1C1C1C;--dark4:#262626;
-  --text:#F0EBE0;--muted:#7A756E;--dim:#3A3530;
+  --navy:#0B1120;--navy2:#111827;--navy3:#1A2438;--navy4:#243047;
+  --teal:#0EA5E9;--teal2:#38BDF8;--teal3:#7DD3FC;
+  --teal-dim:rgba(14,165,233,0.1);--teal-border:rgba(14,165,233,0.22);
+  --gold:#F59E0B;--gold2:#FCD34D;
+  --text:#F8FAFC;--text2:#CBD5E1;--text3:#94A3B8;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
 }
 html{scroll-behavior:smooth}
-body{background:var(--dark);color:var(--text);font-family:'Cairo',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--dark2)}::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:2px}
+body{background:var(--navy);color:var(--text);font-family:'Tajawal',sans-serif;font-size:17px;font-weight:400;line-height:1.8;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--navy2)}::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(12,12,12,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(201,168,76,0.15)}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold-light);letter-spacing:0.05em;text-decoration:none}
+.lang-btn{background:var(--teal-dim);border:1px solid var(--teal-border);color:var(--teal2);font-family:'Tajawal',sans-serif;font-size:0.88rem;font-weight:600;padding:0.3rem 1rem;border-radius:6px;cursor:pointer;transition:all 0.3s;flex-shrink:0}
+.lang-btn:hover{background:rgba(14,165,233,0.2)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 5rem;background:rgba(11,17,32,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--teal2)}
 .nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:var(--muted);font-size:0.85rem;text-decoration:none;letter-spacing:0.08em;transition:color 0.3s}
-.nav-links a:hover{color:var(--gold-light)}
+.nav-links a{color:var(--text3);font-size:0.95rem;text-decoration:none;font-weight:500;transition:color 0.3s}
+.nav-links a:hover{color:var(--teal2)}
 
-.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center;max-width:1200px;margin:0 auto;width:100%}
-.hero-tag{display:inline-block;font-size:0.75rem;letter-spacing:0.2em;color:var(--gold);border:0.5px solid rgba(201,168,76,0.4);padding:0.35rem 1rem;border-radius:2px;margin-bottom:1.5rem;text-transform:uppercase}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;line-height:1.2;margin-bottom:0.5rem;color:var(--text)}
-.hero h1 span{background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light),var(--gold));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
-@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
-.hero-sub{font-size:1rem;color:var(--muted);margin:1.2rem 0 2rem;max-width:500px;line-height:2}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-primary{padding:0.75rem 2rem;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:#0C0C0C;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;border:none;border-radius:3px;cursor:pointer;text-decoration:none;transition:opacity 0.3s,transform 0.2s;display:inline-block}
-.btn-primary:hover{opacity:0.88;transform:translateY(-1px)}
-.btn-outline{padding:0.75rem 2rem;background:transparent;color:var(--gold-light);font-family:'Cairo',sans-serif;font-weight:600;font-size:0.9rem;border:0.5px solid rgba(201,168,76,0.5);border-radius:3px;cursor:pointer;text-decoration:none;transition:background 0.3s,transform 0.2s;display:inline-block}
-.btn-outline:hover{background:rgba(201,168,76,0.08);transform:translateY(-1px)}
-.hero-photo-wrap{position:relative;display:flex;justify-content:center}
-.hero-photo-wrap::before{content:'';position:absolute;inset:-12px;border:0.5px solid rgba(201,168,76,0.25);border-radius:6px}
-.hero-photo-wrap::after{content:'';position:absolute;inset:-24px;border:0.5px solid rgba(201,168,76,0.1);border-radius:8px}
-.hero-photo{width:100%;max-width:340px;border-radius:4px;object-fit:cover;object-position:center top;filter:grayscale(15%) contrast(1.05);display:block;position:relative;z-index:1}
-.hero-stats{display:flex;gap:2rem;margin-top:2.5rem}
-.stat{border-right:1px solid var(--dim);padding-right:2rem}.stat:last-child{border:none}
-.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold-light);display:block;line-height:1}
-.stat-label{font-size:0.75rem;color:var(--muted);letter-spacing:0.1em}
+.hero{min-height:100vh;display:flex;align-items:center;padding:9rem 5rem 5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(14,165,233,0.07) 0%,transparent 60%),radial-gradient(ellipse at 5% 80%,rgba(245,158,11,0.05) 0%,transparent 50%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 300px;gap:6rem;align-items:center;max-width:1200px;margin:0 auto;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.7rem;font-size:0.95rem;font-weight:600;color:var(--teal2);margin-bottom:1.4rem;letter-spacing:0.04em}
+.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--teal);border-radius:2px}
+.hero-name-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:0.7rem}
+h1.ar-name{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:700;color:var(--text);line-height:1.1;direction:rtl}
+h1.ar-name .accent{color:var(--teal2)}
+h1.en-name{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.3vw,2rem);font-weight:400;font-style:italic;color:var(--text3);padding-right:1.5rem;border-right:2px solid var(--teal-border);line-height:1.1}
+.hero-title{font-size:1.1rem;font-weight:600;color:var(--gold);margin-bottom:1.2rem;letter-spacing:0.03em}
+.hero-desc{font-size:1.05rem;color:var(--text2);line-height:2;max-width:570px;margin-bottom:2.2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn-primary{padding:0.9rem 2.3rem;background:var(--teal);color:#fff;font-family:'Tajawal',sans-serif;font-weight:700;font-size:1rem;border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.3s;display:inline-block}
+.btn-primary:hover{background:var(--teal2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(14,165,233,0.35)}
+.btn-outline{padding:0.9rem 2.3rem;background:transparent;color:var(--teal2);font-family:'Tajawal',sans-serif;font-weight:600;font-size:1rem;border:1.5px solid var(--teal-border);border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.3s;display:inline-block}
+.btn-outline:hover{background:var(--teal-dim);transform:translateY(-2px)}
+.hero-stats{display:flex;border:1px solid var(--border2);border-radius:12px;overflow:hidden;width:fit-content}
+.stat{padding:1.2rem 2.2rem;border-left:1px solid var(--border2);text-align:center}
+.stat:last-child{border:none}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--teal2);display:block;line-height:1}
+.stat-label{font-size:0.85rem;color:var(--text3);display:block;margin-top:0.2rem}
 
-section{padding:5rem 4rem}
+.photo-wrap{display:flex;justify-content:center;align-items:center;flex-shrink:0}
+.photo-outer{width:280px;height:280px;border-radius:50%;padding:3px;background:linear-gradient(135deg,var(--teal),var(--teal2),var(--teal3));box-shadow:0 0 50px rgba(14,165,233,0.15)}
+.photo-inner{width:100%;height:100%;border-radius:50%;background:var(--navy3);padding:5px}
+.hero-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 15%;display:block;filter:contrast(1.05)}
+
+section{padding:6rem 5rem}
 .section-inner{max-width:1200px;margin:0 auto}
-.section-label{font-size:0.7rem;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
-.section-label::after{content:'';flex:1;height:0.5px;background:var(--dim);max-width:80px}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;margin-bottom:0.5rem;color:var(--text)}
-.section-desc{color:var(--muted);max-width:560px;margin-bottom:3rem;font-size:0.95rem}
-.gold-line{width:40px;height:2px;background:linear-gradient(90deg,var(--gold-dark),var(--gold));margin:1rem 0 2rem;border-radius:2px}
+.section-eyebrow{font-size:0.88rem;font-weight:700;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem}
+.section-eyebrow::before{content:'';width:22px;height:2px;background:var(--teal);border-radius:2px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;color:var(--text);margin-bottom:0.7rem;line-height:1.2}
+.section-desc{font-size:1.05rem;color:var(--text2);max-width:600px;margin-bottom:3rem;line-height:1.9}
 
-.services-bg{background:var(--dark2)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5px;background:var(--dim);border:0.5px solid var(--dim)}
-.service-card{background:var(--dark2);padding:2rem;transition:background 0.3s;cursor:default}
-.service-card:hover{background:var(--dark3)}
-.service-icon{width:44px;height:44px;border:0.5px solid rgba(201,168,76,0.3);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.3rem}
-.service-card h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.6rem}
-.service-card p{font-size:0.85rem;color:var(--muted);line-height:1.9}
+.alt-bg{background:var(--navy2)}
 
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.about-text h3{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:1rem;color:var(--gold-light)}
-.about-text p{font-size:0.92rem;color:var(--muted);margin-bottom:1.2rem;line-height:2}
-.about-highlights{display:flex;flex-direction:column;gap:1rem}
-.highlight{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem;background:var(--dark3);border:0.5px solid var(--dim);border-radius:4px;transition:border-color 0.3s}
-.highlight:hover{border-color:rgba(201,168,76,0.3)}
-.highlight-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:7px}
-.highlight h4{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.2rem}
-.highlight p{font-size:0.82rem;color:var(--muted);line-height:1.8}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:var(--navy3);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden}
+.service-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--teal2));transform:scaleX(0);transform-origin:right;transition:transform 0.4s}
+.service-card:hover{border-color:var(--teal-border);transform:translateY(-4px);box-shadow:0 20px 44px rgba(0,0,0,0.35)}
+.service-card:hover::after{transform:scaleX(1)}
+.s-icon{width:52px;height:52px;background:var(--teal-dim);border:1px solid var(--teal-border);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem;font-size:1.4rem}
+.service-card h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:0.7rem}
+.service-card p{font-size:0.97rem;color:var(--text3);line-height:1.9}
 
-.zakat-bg{background:var(--dark2)}
-.zakat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.zakat-card{padding:2rem;border:0.5px solid var(--dim);border-radius:4px;background:var(--dark3);transition:border-color 0.3s,transform 0.3s}
-.zakat-card:hover{border-color:rgba(201,168,76,0.35);transform:translateY(-3px)}
-.zakat-card-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
-.zakat-card-icon{width:48px;height:48px;background:rgba(201,168,76,0.08);border:0.5px solid rgba(201,168,76,0.25);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
-.zakat-card-header h3{font-size:1.05rem;font-weight:700;color:var(--gold-light)}
-.zakat-card ul{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
-.zakat-card ul li{font-size:0.85rem;color:var(--muted);display:flex;align-items:center;gap:0.7rem}
-.zakat-card ul li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.training-card{background:var(--navy3);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden}
+.training-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));transform:scaleX(0);transform-origin:right;transition:transform 0.4s}
+.training-card:hover{border-color:rgba(245,158,11,0.3);transform:translateY(-4px);box-shadow:0 20px 44px rgba(0,0,0,0.35)}
+.training-card:hover::after{transform:scaleX(1)}
+.t-icon{width:52px;height:52px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem;font-size:1.4rem}
+.training-card h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:0.7rem}
+.training-card p{font-size:0.97rem;color:var(--text3);line-height:1.9}
+.t-tag{display:inline-block;margin-top:1rem;font-size:0.8rem;font-weight:600;padding:4px 12px;border-radius:6px;background:rgba(245,158,11,0.1);color:var(--gold2);border:1px solid rgba(245,158,11,0.2)}
 
-.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
-.cert-card{padding:1.8rem;border:0.5px solid var(--dim);border-radius:4px;background:var(--dark2);position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s}
-.cert-card:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-3px)}
-.cert-card::before{content:'';position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle at top right,rgba(201,168,76,0.1),transparent 70%)}
-.cert-abbr{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:rgba(201,168,76,0.2);margin-bottom:0.8rem;display:block}
-.cert-card h3{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.4rem}
-.cert-card p{font-size:0.8rem;color:var(--muted)}
-.cert-badge{display:inline-block;margin-top:1rem;font-size:0.7rem;letter-spacing:0.1em;padding:3px 10px;border-radius:2px}
-.cert-badge.done{background:rgba(201,168,76,0.1);color:var(--gold);border:0.5px solid rgba(201,168,76,0.3)}
-.cert-badge.inprog{background:rgba(90,84,80,0.3);color:var(--muted);border:0.5px solid var(--dim)}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:start}
+.about-text p{font-size:1rem;color:var(--text2);margin-bottom:1.2rem;line-height:2}
+.about-cards{display:flex;flex-direction:column;gap:1rem}
+.about-card{display:flex;align-items:flex-start;gap:1.2rem;padding:1.4rem;background:var(--navy3);border:1px solid var(--border);border-radius:12px;transition:border-color 0.3s}
+.about-card:hover{border-color:var(--teal-border)}
+.ac-icon{width:44px;height:44px;background:var(--teal-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.about-card h4{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.3rem}
+.about-card p{font-size:0.92rem;color:var(--text3);line-height:1.8}
 
-.sectors-bg{background:var(--dark2)}
-.sectors-wrap{display:flex;flex-wrap:wrap;gap:1rem}
-.sector-pill{padding:0.6rem 1.4rem;border:0.5px solid var(--dim);border-radius:100px;font-size:0.85rem;color:var(--muted);background:var(--dark3);transition:border-color 0.3s,color 0.3s;cursor:default}
-.sector-pill:hover{border-color:rgba(201,168,76,0.4);color:var(--gold-light)}
-.companies-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2.5rem}
-.company-tag{padding:1rem 2rem;background:var(--dark3);border:0.5px solid var(--dim);border-radius:4px;text-align:center;transition:border-color 0.3s}
-.company-tag:hover{border-color:rgba(201,168,76,0.3)}
-.company-tag span{display:block;font-size:1rem;font-weight:700;color:var(--text)}
-.company-tag small{font-size:0.75rem;color:var(--muted)}
+.zakat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.zakat-card{padding:2rem;border:1px solid var(--border);border-radius:14px;background:var(--navy3);transition:all 0.3s}
+.zakat-card:hover{border-color:var(--teal-border);transform:translateY(-3px)}
+.zakat-head{display:flex;align-items:center;gap:1rem;margin-bottom:1.4rem}
+.z-icon{width:50px;height:50px;background:var(--teal-dim);border:1px solid var(--teal-border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.zakat-head h3{font-size:1.1rem;font-weight:700;color:var(--teal2)}
+.zakat-card ul{list-style:none;display:flex;flex-direction:column;gap:0.8rem}
+.zakat-card ul li{font-size:0.97rem;color:var(--text3);display:flex;align-items:flex-start;gap:0.8rem;line-height:1.75}
+.zakat-card ul li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:0.55rem}
 
-.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start}
-.contact-info h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold-light);margin-bottom:1rem}
-.contact-info p{font-size:0.9rem;color:var(--muted);margin-bottom:2rem;line-height:2}
-.contact-items{display:flex;flex-direction:column;gap:1rem}
-.contact-item{display:flex;align-items:center;gap:1rem;font-size:0.85rem;color:var(--muted)}
-.contact-item-icon{width:36px;height:36px;background:rgba(201,168,76,0.07);border:0.5px solid rgba(201,168,76,0.2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-.contact-form{display:flex;flex-direction:column;gap:1.2rem}
-.form-group{display:flex;flex-direction:column;gap:0.4rem}
-.form-group label{font-size:0.78rem;color:var(--muted);letter-spacing:0.08em}
-.form-group input,.form-group textarea{background:var(--dark3);border:0.5px solid var(--dim);border-radius:3px;padding:0.8rem 1rem;color:var(--text);font-family:'Cairo',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.3s;resize:none;direction:rtl}
-.form-group input:focus,.form-group textarea:focus{border-color:rgba(201,168,76,0.4)}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.cert-card{padding:2rem;border:1px solid var(--border);border-radius:14px;background:var(--navy3);position:relative;overflow:hidden;transition:all 0.3s}
+.cert-card:hover{border-color:var(--teal-border);transform:translateY(-3px)}
+.cert-bg{position:absolute;bottom:-8px;left:10px;font-family:'Playfair Display',serif;font-size:5rem;font-weight:700;color:rgba(14,165,233,0.05);line-height:1;pointer-events:none;direction:ltr}
+.cert-card h3{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;position:relative}
+.cert-card p{font-size:0.93rem;color:var(--text3);line-height:1.8;position:relative}
+.cert-badge{display:inline-flex;align-items:center;gap:0.4rem;margin-top:1rem;font-size:0.82rem;font-weight:600;padding:5px 13px;border-radius:6px;position:relative}
+.cert-badge.done{background:rgba(16,185,129,0.1);color:#34D399;border:1px solid rgba(16,185,129,0.25)}
+.cert-badge.inprog{background:rgba(245,158,11,0.1);color:var(--gold2);border:1px solid rgba(245,158,11,0.25)}
+
+.sectors-pills{display:flex;flex-wrap:wrap;gap:0.9rem;margin-bottom:3rem}
+.sector-pill{padding:0.7rem 1.6rem;border:1px solid var(--border2);border-radius:100px;font-size:1rem;color:var(--text2);background:var(--navy3);transition:all 0.3s;font-weight:500;cursor:default}
+.sector-pill:hover{border-color:var(--teal-border);color:var(--teal2);background:var(--teal-dim)}
+.companies-row{display:flex;gap:1.2rem;flex-wrap:wrap}
+.co-card{padding:1.2rem 2.2rem;background:var(--navy3);border:1px solid var(--border);border-radius:12px;text-align:center;transition:all 0.3s}
+.co-card:hover{border-color:var(--teal-border);transform:translateY(-2px)}
+.co-ar{display:block;font-size:1.1rem;font-weight:700;color:var(--text)}
+.co-en{font-size:0.88rem;color:var(--text3);display:block;margin-top:2px}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:start}
+.contact-items{display:flex;flex-direction:column;gap:0.9rem;margin-top:1.5rem}
+.contact-item{display:flex;align-items:center;gap:1.1rem;font-size:1rem;color:var(--text2);text-decoration:none;transition:all 0.3s;padding:1rem 1.3rem;border:1px solid var(--border);border-radius:10px;background:var(--navy3)}
+.contact-item:hover{color:var(--teal2);border-color:var(--teal-border)}
+.ci-icon{width:40px;height:40px;background:var(--teal-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-form{background:var(--navy3);border:1px solid var(--border);border-radius:16px;padding:2.5rem;display:flex;flex-direction:column;gap:1.3rem}
+.form-group{display:flex;flex-direction:column;gap:0.5rem}
+.form-group label{font-size:0.97rem;color:var(--text2);font-weight:500}
+.form-group input,.form-group textarea{background:var(--navy4);border:1px solid var(--border2);border-radius:8px;padding:0.95rem 1.2rem;color:var(--text);font-family:'Tajawal',sans-serif;font-size:1rem;outline:none;transition:border-color 0.3s;resize:none;direction:rtl}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--teal)}
 .form-group textarea{min-height:120px}
 
-footer{background:var(--dark2);border-top:0.5px solid var(--dim);padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between}
-.footer-name{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold-light)}
-.footer-copy{font-size:0.78rem;color:var(--dim)}
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text)}
+.footer-brand span{color:var(--teal2)}
+.footer-links{display:flex;gap:1.8rem}
+.footer-links a{color:var(--text3);font-size:0.97rem;text-decoration:none;font-weight:500;transition:color 0.3s}
+.footer-links a:hover{color:var(--teal2)}
+.footer-copy{font-size:0.9rem;color:var(--text3)}
 
-.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity 0.65s ease,transform 0.65s ease}
 .fade-in.visible{opacity:1;transform:none}
 
-@media(max-width:900px){
+body.en{direction:ltr;font-family:'Inter',sans-serif}
+body.en .hero-name-row{flex-direction:row-reverse}
+body.en h1.en-name{border-right:none;border-left:2px solid var(--teal-border);padding-right:0;padding-left:1.5rem;font-style:normal;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:700;color:var(--text)}
+body.en h1.ar-name{font-size:clamp(1.4rem,2.3vw,2rem);font-weight:400;font-style:italic;color:var(--text3)}
+body.en .section-eyebrow{flex-direction:row-reverse}
+body.en .hero-stats .stat{border-left:none;border-right:1px solid var(--border2)}
+body.en .hero-stats .stat:last-child{border:none}
+
+@media(max-width:1024px){
   nav{padding:1rem 2rem}.nav-links{display:none}
-  .hero{padding:6rem 2rem 3rem}
-  .hero-grid{grid-template-columns:1fr;gap:2rem}
-  .hero-photo-wrap{order:-1}.hero-photo{max-width:220px;margin:0 auto}
-  section{padding:3.5rem 2rem}
+  .lang-btn{left:1rem}
+  .hero{padding:7rem 2rem 4rem}
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .photo-wrap{order:-1}.photo-outer{width:200px;height:200px}
+  section{padding:4rem 2rem}
+  .services-grid,.training-grid,.certs-grid{grid-template-columns:1fr 1fr}
   .about-grid,.zakat-grid,.contact-grid{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem 2rem}
+  footer{padding:2rem;flex-direction:column;text-align:center}
+}
+@media(max-width:640px){
+  .services-grid,.training-grid,.certs-grid,.zakat-grid{grid-template-columns:1fr}
+  .hero-stats{width:100%;flex-direction:column}
+  .stat{border-left:none;border-bottom:1px solid var(--border2)}
+  .stat:last-child{border:none}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">Mohamed Elattar</a>
+  <a href="#" class="nav-logo">محمد <span>العطار</span></a>
   <ul class="nav-links">
-    <li><a href="#services">الخدمات</a></li>
-    <li><a href="#about">عن محمد</a></li>
-    <li><a href="#zakat">الزكاة والضريبة</a></li>
-    <li><a href="#certs">الشهادات</a></li>
-    <li><a href="#contact">التواصل</a></li>
+    <li><a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+    <li><a href="#training" data-ar="الدورات" data-en="Training">الدورات</a></li>
+    <li><a href="#about" data-ar="عن محمد" data-en="About">عن محمد</a></li>
+    <li><a href="#zakat" data-ar="الزكاة والضريبة" data-en="Zakat & Tax">الزكاة والضريبة</a></li>
+    <li><a href="#certs" data-ar="الشهادات" data-en="Certifications">الشهادات</a></li>
+    <li><a href="#contact" data-ar="التواصل" data-en="Contact">التواصل</a></li>
   </ul>
+  <button class="lang-btn" onclick="toggleLang()" id="langToggle">EN</button>
 </nav>
 
 <section class="hero" id="home">
   <div class="hero-grid">
-    <div class="hero-content">
-      <div class="hero-tag">قائد مالي · خبير محاسبي</div>
-      <h1>محمد<br><span>العطار</span></h1>
-      <p class="hero-sub">خبرة تتجاوز 15 عاماً في المحاسبة والتحليل المالي والنمذجة المالية والزكاة والضريبة، عبر قطاعات متنوعة تشمل الشركات التجارية والمقاولات وتطبيقات الركاب والمطاعم.</p>
+    <div>
+      <div class="hero-eyebrow" data-ar="قائد مالي · خبير محاسبي" data-en="Financial Leader · Accounting Expert">قائد مالي · خبير محاسبي</div>
+      <div class="hero-name-row">
+        <h1 class="ar-name">محمد <span class="accent">العطار</span></h1>
+        <h1 class="en-name">Mohamed Elattar</h1>
+      </div>
+      <p class="hero-title" data-ar="CFM · CFC · FMVA | خبرة +15 سنة" data-en="CFM · CFC · FMVA | 15+ Years Experience">CFM · CFC · FMVA | خبرة +15 سنة</p>
+      <p class="hero-desc" data-ar="متخصص في المحاسبة والتحليل المالي والنمذجة المالية والزكاة والضريبة، بخبرة تتجاوز 15 عاماً عبر قطاعات متنوعة تشمل التجارة والمقاولات والتقنية والمطاعم." data-en="Specialist in accounting, financial analysis, financial modeling, zakat and taxation — with over 15 years of experience across diverse sectors including commerce, contracting, technology, and restaurants.">متخصص في المحاسبة والتحليل المالي والنمذجة المالية والزكاة والضريبة، بخبرة تتجاوز 15 عاماً عبر قطاعات متنوعة تشمل التجارة والمقاولات والتقنية والمطاعم.</p>
       <div class="hero-btns">
-        <a href="#contact" class="btn-primary">تواصل معي</a>
-        <a href="#services" class="btn-outline">اكتشف خدماتي</a>
+        <a href="#contact" class="btn-primary" data-ar="تواصل معي" data-en="Get In Touch">تواصل معي</a>
+        <a href="#services" class="btn-outline" data-ar="استكشف الخدمات" data-en="Explore Services">استكشف الخدمات</a>
       </div>
       <div class="hero-stats">
-        <div class="stat"><span class="stat-num">+15</span><span class="stat-label">سنة خبرة</span></div>
-        <div class="stat"><span class="stat-num">3</span><span class="stat-label">شهادات مهنية</span></div>
-        <div class="stat"><span class="stat-num">6+</span><span class="stat-label">قطاعات</span></div>
+        <div class="stat"><span class="stat-num">+15</span><span class="stat-label" data-ar="سنة خبرة" data-en="Years Exp.">سنة خبرة</span></div>
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label" data-ar="شهادات دولية" data-en="Certifications">شهادات دولية</span></div>
+        <div class="stat"><span class="stat-num">6+</span><span class="stat-label" data-ar="قطاعات" data-en="Sectors">قطاعات</span></div>
       </div>
     </div>
-    <div class="hero-photo-wrap">
-      <img src="https://i.postimg.cc/6qGSMnrY/1688844292943.jpg" alt="محمد العطار" class="hero-photo">
+    <div class="photo-wrap">
+      <div class="photo-outer"><div class="photo-inner">
+        <img src="https://i.postimg.cc/6qGSMnrY/1688844292943.jpg" alt="محمد العطار" class="hero-photo">
+      </div></div>
     </div>
   </div>
 </section>
 
-<section class="services-bg" id="services">
+<section class="alt-bg" id="services">
   <div class="section-inner">
     <div class="fade-in">
-      <div class="section-label">ما أقدمه</div>
-      <h2 class="section-title">الخدمات المالية</h2>
-      <div class="gold-line"></div>
+      <div class="section-eyebrow" data-ar="ما أقدمه" data-en="What I Offer">ما أقدمه</div>
+      <h2 class="section-title" data-ar="الخدمات المالية" data-en="Financial Services">الخدمات المالية</h2>
+      <p class="section-desc" data-ar="خدمات مالية متكاملة تغطي جميع احتياجات شركتك من المحاسبة والتحليل والضريبة." data-en="Comprehensive financial services covering all your company's accounting, analysis, and taxation needs.">خدمات مالية متكاملة تغطي جميع احتياجات شركتك من المحاسبة والتحليل والضريبة.</p>
     </div>
     <div class="services-grid fade-in">
-      <div class="service-card"><div class="service-icon">📊</div><h3>التحليل المالي</h3><p>تحليل عميق للقوائم المالية واستخراج مؤشرات الأداء الرئيسية لدعم القرارات الاستراتيجية وتقييم الوضع المالي للمنشآت.</p></div>
-      <div class="service-card"><div class="service-icon">📐</div><h3>النمذجة المالية</h3><p>بناء نماذج مالية متكاملة للتوقعات والميزانيات التقديرية وتقييم المشاريع، تعكس الواقع وتدعم التخطيط المستقبلي.</p></div>
-      <div class="service-card"><div class="service-icon">🧾</div><h3>المحاسبة المالية</h3><p>إعداد وتدقيق القوائم المالية وفق المعايير المحاسبية الدولية IFRS والسعودية، مع ضمان الدقة والامتثال الكامل.</p></div>
-      <div class="service-card"><div class="service-icon">🏗️</div><h3>محاسبة المقاولات</h3><p>تخصص في محاسبة المشاريع والعقود طويلة الأجل، وتتبع التكاليف ونسب الإنجاز وإدارة التدفقات النقدية للمقاولين.</p></div>
-      <div class="service-card"><div class="service-icon">💰</div><h3>الزكاة والضريبة</h3><p>حساب وعاء الزكاة وإعداد الإقرارات الضريبية وفق متطلبات هيئة الزكاة والضريبة والجمارك، والتخطيط الضريبي الأمثل.</p></div>
-      <div class="service-card"><div class="service-icon">🎯</div><h3>الاستشارات المالية</h3><p>تقديم استشارات استراتيجية للشركات في مجال الهيكلة المالية وتحسين الأداء واتخاذ القرارات المالية الكبرى.</p></div>
+      <div class="service-card"><div class="s-icon">📊</div><h3 data-ar="التحليل المالي" data-en="Financial Analysis">التحليل المالي</h3><p data-ar="تحليل عميق للقوائم المالية واستخراج مؤشرات الأداء الرئيسية لدعم القرارات الاستراتيجية وتقييم الوضع المالي للمنشآت." data-en="In-depth financial statement analysis and KPI extraction to support strategic decisions and assess organizational financial health.">تحليل عميق للقوائم المالية واستخراج مؤشرات الأداء الرئيسية لدعم القرارات الاستراتيجية وتقييم الوضع المالي للمنشآت.</p></div>
+      <div class="service-card"><div class="s-icon">📐</div><h3 data-ar="النمذجة المالية" data-en="Financial Modeling">النمذجة المالية</h3><p data-ar="بناء نماذج مالية متكاملة للتوقعات والميزانيات التقديرية وتقييم المشاريع تدعم التخطيط المستقبلي للشركات." data-en="Building comprehensive financial models for forecasts, budgets, and project valuations that support company future planning.">بناء نماذج مالية متكاملة للتوقعات والميزانيات التقديرية وتقييم المشاريع تدعم التخطيط المستقبلي للشركات.</p></div>
+      <div class="service-card"><div class="s-icon">🧾</div><h3 data-ar="المحاسبة المالية" data-en="Financial Accounting">المحاسبة المالية</h3><p data-ar="إعداد وتدقيق القوائم المالية وفق معايير IFRS والمعايير السعودية مع ضمان الدقة والامتثال الكامل للأنظمة." data-en="Preparation and auditing of financial statements per IFRS and Saudi standards ensuring full accuracy and regulatory compliance.">إعداد وتدقيق القوائم المالية وفق معايير IFRS والمعايير السعودية مع ضمان الدقة والامتثال الكامل للأنظمة.</p></div>
+      <div class="service-card"><div class="s-icon">🏗️</div><h3 data-ar="محاسبة المقاولات" data-en="Contracting Accounting">محاسبة المقاولات</h3><p data-ar="تخصص في محاسبة المشاريع والعقود طويلة الأجل وتتبع التكاليف ونسب الإنجاز وإدارة التدفقات النقدية للمقاولين." data-en="Specialization in project accounting, long-term contracts, cost tracking, completion rates, and cash flow management.">تخصص في محاسبة المشاريع والعقود طويلة الأجل وتتبع التكاليف ونسب الإنجاز وإدارة التدفقات النقدية للمقاولين.</p></div>
+      <div class="service-card"><div class="s-icon">💰</div><h3 data-ar="الزكاة والضريبة" data-en="Zakat & Taxation">الزكاة والضريبة</h3><p data-ar="حساب وعاء الزكاة وإعداد الإقرارات الضريبية وفق متطلبات هيئة الزكاة والضريبة والجمارك والتخطيط الضريبي." data-en="Zakat base calculation, tax return preparation per ZATCA requirements, and strategic tax planning.">حساب وعاء الزكاة وإعداد الإقرارات الضريبية وفق متطلبات هيئة الزكاة والضريبة والجمارك والتخطيط الضريبي.</p></div>
+      <div class="service-card"><div class="s-icon">🎯</div><h3 data-ar="الاستشارات المالية" data-en="Financial Consulting">الاستشارات المالية</h3><p data-ar="استشارات استراتيجية في الهيكلة المالية وتحسين الأداء واتخاذ القرارات المالية الكبرى للشركات في مختلف القطاعات." data-en="Strategic consulting on financial restructuring, performance improvement, and major financial decisions across sectors.">استشارات استراتيجية في الهيكلة المالية وتحسين الأداء واتخاذ القرارات المالية الكبرى للشركات في مختلف القطاعات.</p></div>
     </div>
   </div>
 </section>
 
-<section id="about">
+<section id="training">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="section-eyebrow" data-ar="تطوير المهارات" data-en="Skill Development">تطوير المهارات</div>
+      <h2 class="section-title" data-ar="الدورات التدريبية" data-en="Training Courses">الدورات التدريبية</h2>
+      <p class="section-desc" data-ar="دورات تدريبية متخصصة في المجال المالي والمحاسبي لتطوير كفاءات الأفراد والفرق المالية وتأهيل الكوادر المهنية." data-en="Specialized training courses in finance and accounting to develop individual and team competencies and qualify professional talent.">دورات تدريبية متخصصة في المجال المالي والمحاسبي لتطوير كفاءات الأفراد والفرق المالية وتأهيل الكوادر المهنية.</p>
+    </div>
+    <div class="training-grid fade-in">
+      <div class="training-card"><div class="t-icon">📈</div><h3 data-ar="دورة التحليل المالي العملي" data-en="Practical Financial Analysis">دورة التحليل المالي العملي</h3><p data-ar="قراءة وتحليل القوائم المالية واستخراج المؤشرات الرئيسية واتخاذ القرارات المبنية على البيانات المالية بأسلوب تطبيقي عملي." data-en="Reading and analyzing financial statements, extracting key indicators, and making data-driven financial decisions through a practical applied approach.">قراءة وتحليل القوائم المالية واستخراج المؤشرات الرئيسية واتخاذ القرارات المبنية على البيانات المالية بأسلوب تطبيقي عملي.</p><span class="t-tag" data-ar="مالي · تحليلي" data-en="Finance · Analysis">مالي · تحليلي</span></div>
+      <div class="training-card"><div class="t-icon">📋</div><h3 data-ar="دورة المحاسبة الإدارية" data-en="Management Accounting Course">دورة المحاسبة الإدارية</h3><p data-ar="محاسبة التكاليف والميزانيات والتقارير الإدارية وأدوات قياس الأداء المؤسسي — مع أمثلة واقعية من مختلف القطاعات." data-en="Cost accounting, budgets, management reports, and performance measurement tools — with real-world examples from various sectors.">محاسبة التكاليف والميزانيات والتقارير الإدارية وأدوات قياس الأداء المؤسسي — مع أمثلة واقعية من مختلف القطاعات.</p><span class="t-tag" data-ar="محاسبة · إدارة" data-en="Accounting · Management">محاسبة · إدارة</span></div>
+      <div class="training-card"><div class="t-icon">🕌</div><h3 data-ar="دورة الزكاة والضريبة التطبيقية" data-en="Applied Zakat & Tax Course">دورة الزكاة والضريبة التطبيقية</h3><p data-ar="أحكام الزكاة ومتطلبات VAT وضريبة الدخل وضريبة الاستقطاع وفق اشتراطات هيئة الزكاة والضريبة والجمارك مع حالات واقعية." data-en="Zakat, VAT, income tax, and withholding tax per ZATCA requirements with real application cases.">أحكام الزكاة ومتطلبات VAT وضريبة الدخل وضريبة الاستقطاع وفق اشتراطات هيئة الزكاة والضريبة والجمارك مع حالات واقعية.</p><span class="t-tag" data-ar="زكاة · ضريبة" data-en="Zakat · Tax">زكاة · ضريبة</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg" id="about">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-text fade-in">
-        <div class="section-label">من أنا</div>
-        <h2 class="section-title">عن محمد العطار</h2>
-        <div class="gold-line"></div>
-        <p>قائد مالي بخبرة تتجاوز 15 عاماً اكتسبها عبر العمل في قطاعات متنوعة ومتحدية، من الشركات التجارية الكبرى وشركات المقاولات إلى شركات التقنية وتطبيقات الركاب والمطاعم.</p>
-        <p>حاصل على بكالوريوس تجارة إنجليزي تخصص محاسبة، وعلى ثلاث شهادات مهنية دولية معتمدة في المجال المالي، مع إيمان راسخ بأن الدقة المالية ركيزة أساسية لنجاح أي مؤسسة.</p>
-        <p>عمل مع شركات بارزة من أبرزها بولت Bolt وغزال Gazal وأجراس Ajras، واكتسب خبرة واسعة في إدارة الذمم والتدفق النقدي وتحليل الأداء المالي للشركات الناشئة.</p>
+      <div class="fade-in">
+        <div class="section-eyebrow" data-ar="من أنا" data-en="About Me">من أنا</div>
+        <h2 class="section-title" data-ar="عن محمد العطار" data-en="About Mohamed Elattar">عن محمد العطار</h2>
+        <div class="about-text">
+          <p data-ar="قائد مالي بخبرة تتجاوز 15 عاماً اكتسبها عبر العمل في قطاعات متنوعة ومتحدية، من الشركات التجارية الكبرى وشركات المقاولات إلى شركات التقنية وتطبيقات الركاب والمطاعم." data-en="A financial leader with over 15 years of experience gained across diverse and challenging sectors — from large commercial companies and contracting firms to technology companies, ride-hailing apps, and restaurants.">قائد مالي بخبرة تتجاوز 15 عاماً اكتسبها عبر العمل في قطاعات متنوعة ومتحدية، من الشركات التجارية الكبرى وشركات المقاولات إلى شركات التقنية وتطبيقات الركاب والمطاعم.</p>
+          <p data-ar="حاصل على بكالوريوس تجارة إنجليزي تخصص محاسبة، وثلاث شهادات مهنية دولية معتمدة CFM وCFC وFMVA، مع مسيرة تدريبية في تطوير وتأهيل الكوادر المالية المتخصصة." data-en="Holds a Bachelor's in English Commerce (Accounting) and three internationally accredited certifications: CFM, CFC, and FMVA — with a training career developing and qualifying specialized financial talent.">حاصل على بكالوريوس تجارة إنجليزي تخصص محاسبة، وثلاث شهادات مهنية دولية معتمدة CFM وCFC وFMVA، مع مسيرة تدريبية في تطوير وتأهيل الكوادر المالية المتخصصة.</p>
+        </div>
       </div>
-      <div class="about-highlights fade-in">
-        <div class="highlight"><div class="highlight-dot"></div><div><h4>المحاسبة المالية والإدارية</h4><p>إعداد القوائم المالية وفق المعايير الدولية، وتقارير الأداء الإداري الداخلية لدعم قرارات الإدارة.</p></div></div>
-        <div class="highlight"><div class="highlight-dot"></div><div><h4>التحليل والنمذجة المالية</h4><p>بناء نماذج مالية احترافية للميزانيات والتوقعات وتقييم الاستثمارات والسيناريوهات المالية.</p></div></div>
-        <div class="highlight"><div class="highlight-dot"></div><div><h4>الزكاة والضريبة</h4><p>خبرة عملية في حساب وعاء الزكاة وإعداد الإقرارات الضريبية والتعامل مع هيئة الزكاة والضريبة والجمارك.</p></div></div>
-        <div class="highlight"><div class="highlight-dot"></div><div><h4>قطاعات متنوعة</h4><p>تجارة، مقاولات، خدمات، تقنية، مطاعم — فهم عميق للخصائص المالية لكل قطاع ومتطلباته.</p></div></div>
+      <div class="about-cards fade-in">
+        <div class="about-card"><div class="ac-icon">📊</div><div><h4 data-ar="التحليل والنمذجة المالية" data-en="Financial Analysis & Modeling">التحليل والنمذجة المالية</h4><p data-ar="نماذج مالية احترافية للميزانيات والتوقعات وتقييم الاستثمارات والسيناريوهات." data-en="Professional financial models for budgets, forecasts, investment valuation, and scenarios.">نماذج مالية احترافية للميزانيات والتوقعات وتقييم الاستثمارات والسيناريوهات.</p></div></div>
+        <div class="about-card"><div class="ac-icon">💰</div><div><h4 data-ar="الزكاة والضريبة" data-en="Zakat & Taxation">الزكاة والضريبة</h4><p data-ar="خبرة عملية متعمقة مع هيئة الزكاة والضريبة والجمارك في المملكة العربية السعودية." data-en="Deep hands-on expertise with ZATCA in the Kingdom of Saudi Arabia.">خبرة عملية متعمقة مع هيئة الزكاة والضريبة والجمارك في المملكة العربية السعودية.</p></div></div>
+        <div class="about-card"><div class="ac-icon">🏗️</div><div><h4 data-ar="محاسبة المقاولات" data-en="Contracting Accounting">محاسبة المقاولات</h4><p data-ar="تخصص نادر في محاسبة المشاريع والعقود الإنشائية وعقود الإيجار طويلة الأجل." data-en="Rare specialization in project accounting, construction contracts, and long-term lease agreements.">تخصص نادر في محاسبة المشاريع والعقود الإنشائية وعقود الإيجار طويلة الأجل.</p></div></div>
+        <div class="about-card"><div class="ac-icon">🎓</div><div><h4 data-ar="التدريب المهني" data-en="Professional Training">التدريب المهني</h4><p data-ar="تقديم دورات تدريبية متخصصة لتطوير وتأهيل الكوادر المالية في مختلف المستويات." data-en="Delivering specialized training courses to develop and qualify financial talent at all levels.">تقديم دورات تدريبية متخصصة لتطوير وتأهيل الكوادر المالية في مختلف المستويات.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="zakat-bg" id="zakat">
+<section id="zakat">
   <div class="section-inner">
     <div class="fade-in">
-      <div class="section-label">تخصص دقيق</div>
-      <h2 class="section-title">الزكاة والضريبة</h2>
-      <div class="gold-line"></div>
-      <p class="section-desc">خبرة متخصصة في الامتثال الزكوي والضريبي وفق متطلبات المملكة العربية السعودية والمعايير الدولية.</p>
+      <div class="section-eyebrow" data-ar="تخصص دقيق" data-en="Deep Specialization">تخصص دقيق</div>
+      <h2 class="section-title" data-ar="الزكاة والضريبة" data-en="Zakat & Taxation">الزكاة والضريبة</h2>
+      <p class="section-desc" data-ar="خبرة متعمقة في الامتثال الزكوي والضريبي وفق متطلبات المملكة العربية السعودية." data-en="Deep expertise in zakat and tax compliance per Saudi Arabia requirements.">خبرة متعمقة في الامتثال الزكوي والضريبي وفق متطلبات المملكة العربية السعودية.</p>
     </div>
     <div class="zakat-grid fade-in">
-      <div class="zakat-card">
-        <div class="zakat-card-header"><div class="zakat-card-icon">🕌</div><h3>الزكاة</h3></div>
-        <ul>
-          <li>تحديد الوعاء الزكوي بدقة وفق الفقه الإسلامي والأنظمة المعتمدة</li>
-          <li>إعداد إقرارات الزكاة السنوية وتقديمها لهيئة الزكاة والضريبة</li>
-          <li>التعامل مع حالات الاعتراض والمراجعة الزكوية</li>
-          <li>التخطيط الزكوي الاستراتيجي للمنشآت التجارية</li>
-          <li>توثيق ومراجعة أصول الزكاة والخصوم المقابلة</li>
-        </ul>
-      </div>
-      <div class="zakat-card">
-        <div class="zakat-card-header"><div class="zakat-card-icon">📋</div><h3>ضريبة القيمة المضافة (VAT)</h3></div>
-        <ul>
-          <li>التسجيل في منظومة ضريبة القيمة المضافة واستيفاء الشروط</li>
-          <li>إعداد الإقرارات الضريبية الشهرية والفصلية</li>
-          <li>مراجعة الفواتير والتأكد من الامتثال الكامل</li>
-          <li>التعامل مع ضريبة العمليات العابرة للحدود</li>
-          <li>تدريب الفرق المالية على المتطلبات الضريبية</li>
-        </ul>
-      </div>
-      <div class="zakat-card">
-        <div class="zakat-card-header"><div class="zakat-card-icon">🏢</div><h3>ضريبة الدخل والاستقطاع</h3></div>
-        <ul>
-          <li>احتساب ضريبة الدخل للمنشآت غير السعودية وغير الخليجية</li>
-          <li>إعداد إقرارات ضريبة الاستقطاع وتوثيقها</li>
-          <li>التعامل مع اتفاقيات تجنب الازدواج الضريبي</li>
-          <li>مراجعة العقود من منظور ضريبة الاستقطاع</li>
-          <li>تقديم المشورة للشركات الأجنبية العاملة في المملكة</li>
-        </ul>
-      </div>
-      <div class="zakat-card">
-        <div class="zakat-card-header"><div class="zakat-card-icon">⚖️</div><h3>الامتثال والتخطيط الضريبي</h3></div>
-        <ul>
-          <li>مراجعة شاملة للوضع الضريبي وتقييم المخاطر</li>
-          <li>وضع خطط ضريبية للحد من الأعباء ضمن الأطر القانونية</li>
-          <li>التمثيل أمام هيئة الزكاة والضريبة والجمارك</li>
-          <li>الاطلاع المستمر على التحديثات التشريعية وانعكاساتها</li>
-          <li>إعداد سياسات الامتثال الضريبي للمنشآت</li>
-        </ul>
-      </div>
+      <div class="zakat-card"><div class="zakat-head"><div class="z-icon">🕌</div><h3 data-ar="الزكاة" data-en="Zakat">الزكاة</h3></div><ul><li data-ar="تحديد الوعاء الزكوي بدقة وفق الفقه الإسلامي" data-en="Accurate zakat base determination per Islamic jurisprudence">تحديد الوعاء الزكوي بدقة وفق الفقه الإسلامي</li><li data-ar="إعداد إقرارات الزكاة السنوية وتقديمها للهيئة" data-en="Preparing and filing annual zakat returns">إعداد إقرارات الزكاة السنوية وتقديمها للهيئة</li><li data-ar="التعامل مع حالات الاعتراض والمراجعة الزكوية" data-en="Handling zakat objections and review cases">التعامل مع حالات الاعتراض والمراجعة الزكوية</li><li data-ar="التخطيط الزكوي الاستراتيجي للمنشآت" data-en="Strategic zakat planning for entities">التخطيط الزكوي الاستراتيجي للمنشآت</li></ul></div>
+      <div class="zakat-card"><div class="zakat-head"><div class="z-icon">📋</div><h3 data-ar="ضريبة القيمة المضافة" data-en="VAT">ضريبة القيمة المضافة (VAT)</h3></div><ul><li data-ar="التسجيل في منظومة VAT واستيفاء الشروط" data-en="VAT registration and compliance">التسجيل في منظومة VAT واستيفاء الشروط</li><li data-ar="إعداد الإقرارات الشهرية والفصلية" data-en="Monthly and quarterly return preparation">إعداد الإقرارات الشهرية والفصلية</li><li data-ar="مراجعة الفواتير والتأكد من الامتثال الكامل" data-en="Invoice review and full compliance verification">مراجعة الفواتير والتأكد من الامتثال الكامل</li><li data-ar="تدريب الفرق المالية على المتطلبات الضريبية" data-en="Training finance teams on tax requirements">تدريب الفرق المالية على المتطلبات الضريبية</li></ul></div>
+      <div class="zakat-card"><div class="zakat-head"><div class="z-icon">🏢</div><h3 data-ar="ضريبة الدخل والاستقطاع" data-en="Income & Withholding Tax">ضريبة الدخل والاستقطاع</h3></div><ul><li data-ar="احتساب ضريبة الدخل للمنشآت غير السعودية" data-en="Income tax for non-Saudi entities">احتساب ضريبة الدخل للمنشآت غير السعودية</li><li data-ar="إعداد إقرارات ضريبة الاستقطاع وتوثيقها" data-en="Withholding tax return preparation">إعداد إقرارات ضريبة الاستقطاع وتوثيقها</li><li data-ar="اتفاقيات تجنب الازدواج الضريبي" data-en="Double taxation avoidance agreements">اتفاقيات تجنب الازدواج الضريبي</li><li data-ar="المشورة للشركات الأجنبية في المملكة" data-en="Advisory for foreign companies in KSA">المشورة للشركات الأجنبية في المملكة</li></ul></div>
+      <div class="zakat-card"><div class="zakat-head"><div class="z-icon">⚖️</div><h3 data-ar="التخطيط الضريبي والامتثال" data-en="Tax Planning & Compliance">التخطيط الضريبي والامتثال</h3></div><ul><li data-ar="مراجعة شاملة للوضع الضريبي وتقييم المخاطر" data-en="Comprehensive tax review and risk assessment">مراجعة شاملة للوضع الضريبي وتقييم المخاطر</li><li data-ar="خطط لتخفيض الأعباء ضمن الأطر القانونية" data-en="Plans to reduce burdens within legal frameworks">خطط لتخفيض الأعباء ضمن الأطر القانونية</li><li data-ar="التمثيل أمام هيئة الزكاة والضريبة والجمارك" data-en="Representation before ZATCA">التمثيل أمام هيئة الزكاة والضريبة والجمارك</li><li data-ar="إعداد سياسات الامتثال الضريبي للمنشآت" data-en="Tax compliance policy preparation">إعداد سياسات الامتثال الضريبي للمنشآت</li></ul></div>
     </div>
   </div>
 </section>
 
-<section id="certs">
+<section class="alt-bg" id="certs">
   <div class="section-inner">
     <div class="fade-in">
-      <div class="section-label">مؤهلات مهنية</div>
-      <h2 class="section-title">الشهادات الاحترافية</h2>
-      <div class="gold-line"></div>
-      <p class="section-desc">شهادات دولية معتمدة تعكس التزاماً دائماً بأعلى معايير المهنة المالية.</p>
+      <div class="section-eyebrow" data-ar="مؤهلات مهنية" data-en="Professional Qualifications">مؤهلات مهنية</div>
+      <h2 class="section-title" data-ar="الشهادات الاحترافية" data-en="Certifications">الشهادات الاحترافية</h2>
+      <p class="section-desc" data-ar="شهادات دولية معتمدة تعكس التزاماً دائماً بأعلى معايير المهنة المالية." data-en="Internationally accredited certifications reflecting constant commitment to the highest financial profession standards.">شهادات دولية معتمدة تعكس التزاماً دائماً بأعلى معايير المهنة المالية.</p>
     </div>
     <div class="certs-grid fade-in">
-      <div class="cert-card"><span class="cert-abbr">CFM</span><h3>شهادة مدير مالي معتمد</h3><p>Certified Financial Manager — شهادة دولية في الإدارة المالية الشاملة وقيادة الفرق المالية.</p><span class="cert-badge done">✓ معتمد</span></div>
-      <div class="cert-card"><span class="cert-abbr">CFC</span><h3>شهادة مستشار مالي معتمد</h3><p>Certified Financial Consultant — من معهد تمويل الشركات، في الاستشارات والتخطيط المالي الاستراتيجي.</p><span class="cert-badge done">✓ معتمد</span></div>
-      <div class="cert-card"><span class="cert-abbr">FMVA</span><h3>شهادة التحليل والنمذجة المالية</h3><p>Financial Modeling &amp; Valuation Analyst — من معهد CFI، في النمذجة المالية المتقدمة وتقييم الأعمال.</p><span class="cert-badge done">✓ معتمد</span></div>
-      <div class="cert-card"><span class="cert-abbr">CMA</span><h3>المحاسب الإداري المعتمد</h3><p>Certified Management Accountant — من IMA، أحد أرفع الشهادات المحاسبية عالمياً في المحاسبة الإدارية.</p><span class="cert-badge inprog">⟳ جارٍ الحصول عليها</span></div>
-      <div class="cert-card"><span class="cert-abbr">B.Com</span><h3>بكالوريوس تجارة إنجليزي</h3><p>تخصص محاسبة — الأساس الأكاديمي الراسخ الذي بُنيت عليه المسيرة المهنية في عالم المالية والمحاسبة.</p><span class="cert-badge done">✓ مؤهل أكاديمي</span></div>
+      <div class="cert-card"><div class="cert-bg">CFM</div><h3 data-ar="شهادة مدير مالي معتمد" data-en="Certified Financial Manager">شهادة مدير مالي معتمد</h3><p data-ar="شهادة دولية في الإدارة المالية الشاملة وقيادة الفرق المالية واتخاذ القرارات." data-en="International certification in comprehensive financial management and finance leadership.">شهادة دولية في الإدارة المالية الشاملة وقيادة الفرق المالية واتخاذ القرارات.</p><span class="cert-badge done">✓ <span data-ar="معتمد" data-en="Certified">معتمد</span></span></div>
+      <div class="cert-card"><div class="cert-bg">CFC</div><h3 data-ar="شهادة مستشار مالي معتمد" data-en="Certified Financial Consultant">شهادة مستشار مالي معتمد</h3><p data-ar="من معهد تمويل الشركات، في الاستشارات والتخطيط المالي الاستراتيجي." data-en="From the Corporate Finance Institute, in consulting and strategic financial planning.">من معهد تمويل الشركات، في الاستشارات والتخطيط المالي الاستراتيجي.</p><span class="cert-badge done">✓ <span data-ar="معتمد" data-en="Certified">معتمد</span></span></div>
+      <div class="cert-card"><div class="cert-bg">FMVA</div><h3 data-ar="شهادة التحليل والنمذجة المالية" data-en="Financial Modeling & Valuation Analyst">شهادة التحليل والنمذجة المالية</h3><p data-ar="من معهد CFI، في النمذجة المالية المتقدمة وتقييم الأعمال والاستثمارات." data-en="From CFI, in advanced financial modeling and business and investment valuation.">من معهد CFI، في النمذجة المالية المتقدمة وتقييم الأعمال والاستثمارات.</p><span class="cert-badge done">✓ <span data-ar="معتمد" data-en="Certified">معتمد</span></span></div>
+      <div class="cert-card"><div class="cert-bg">CMA</div><h3 data-ar="المحاسب الإداري المعتمد" data-en="Certified Management Accountant">المحاسب الإداري المعتمد</h3><p data-ar="من IMA، أحد أرفع الشهادات المحاسبية عالمياً في المحاسبة الإدارية والتخطيط المالي." data-en="From IMA, one of the world's highest accounting certifications in management accounting and financial planning.">من IMA، أحد أرفع الشهادات المحاسبية عالمياً في المحاسبة الإدارية والتخطيط المالي.</p><span class="cert-badge inprog">⟳ <span data-ar="جارٍ الحصول عليها" data-en="In Progress">جارٍ الحصول عليها</span></span></div>
+      <div class="cert-card"><div class="cert-bg">B</div><h3 data-ar="بكالوريوس تجارة إنجليزي" data-en="Bachelor of Commerce (English)">بكالوريوس تجارة إنجليزي</h3><p data-ar="تخصص محاسبة — الأساس الأكاديمي الراسخ الذي قامت عليه المسيرة المهنية." data-en="Accounting major — the solid academic foundation on which the professional career was built.">تخصص محاسبة — الأساس الأكاديمي الراسخ الذي قامت عليه المسيرة المهنية.</p><span class="cert-badge done">✓ <span data-ar="مؤهل أكاديمي" data-en="Academic Degree">مؤهل أكاديمي</span></span></div>
     </div>
   </div>
 </section>
 
-<section class="sectors-bg" id="sectors">
+<section id="sectors">
   <div class="section-inner">
     <div class="fade-in">
-      <div class="section-label">التجربة الميدانية</div>
-      <h2 class="section-title">القطاعات والشركات</h2>
-      <div class="gold-line"></div>
-      <p class="section-desc">خبرة عملية في بيئات متنوعة ومتحدية تمنح فهماً شاملاً لمختلف القطاعات الاقتصادية.</p>
+      <div class="section-eyebrow" data-ar="التجربة الميدانية" data-en="Field Experience">التجربة الميدانية</div>
+      <h2 class="section-title" data-ar="القطاعات والشركات" data-en="Sectors & Companies">القطاعات والشركات</h2>
+      <p class="section-desc" data-ar="خبرة عملية في بيئات متنوعة تمنح فهماً شاملاً لمختلف القطاعات الاقتصادية ومتطلباتها المالية." data-en="Practical experience in diverse environments providing comprehensive understanding of various economic sectors and their financial requirements.">خبرة عملية في بيئات متنوعة تمنح فهماً شاملاً لمختلف القطاعات الاقتصادية ومتطلباتها المالية.</p>
     </div>
     <div class="fade-in">
-      <p style="font-size:0.78rem;color:var(--muted);letter-spacing:0.15em;margin-bottom:1rem">القطاعات</p>
-      <div class="sectors-wrap">
-        <span class="sector-pill">الشركات التجارية</span>
-        <span class="sector-pill">المقاولات والإنشاءات</span>
-        <span class="sector-pill">الشركات الخدمية</span>
-        <span class="sector-pill">تطبيقات الركاب والتوصيل</span>
-        <span class="sector-pill">قطاع المطاعم والأغذية</span>
-        <span class="sector-pill">الشركات الناشئة والتقنية</span>
+      <div class="sectors-pills">
+        <span class="sector-pill" data-ar="الشركات التجارية" data-en="Commercial Companies">الشركات التجارية</span>
+        <span class="sector-pill" data-ar="المقاولات والإنشاءات" data-en="Contracting & Construction">المقاولات والإنشاءات</span>
+        <span class="sector-pill" data-ar="الشركات الخدمية" data-en="Service Companies">الشركات الخدمية</span>
+        <span class="sector-pill" data-ar="تطبيقات الركاب والتوصيل" data-en="Ride-hailing & Delivery">تطبيقات الركاب والتوصيل</span>
+        <span class="sector-pill" data-ar="المطاعم والأغذية" data-en="Restaurants & Food">المطاعم والأغذية</span>
+        <span class="sector-pill" data-ar="الشركات الناشئة والتقنية" data-en="Startups & Technology">الشركات الناشئة والتقنية</span>
       </div>
-      <p style="font-size:0.78rem;color:var(--muted);letter-spacing:0.15em;margin-top:2.5rem;margin-bottom:1rem">أبرز الشركات</p>
+      <p style="font-size:0.85rem;color:var(--text3);letter-spacing:0.1em;margin-bottom:1.2rem;font-weight:600;text-transform:uppercase" data-ar="أبرز الشركات" data-en="KEY COMPANIES">أبرز الشركات</p>
       <div class="companies-row">
-        <div class="company-tag"><span>بولت</span><small>Bolt</small></div>
-        <div class="company-tag"><span>غزال</span><small>Gazal</small></div>
-        <div class="company-tag"><span>أجراس</span><small>Ajras</small></div>
+        <div class="co-card"><span class="co-ar">بولت</span><span class="co-en">Bolt</span></div>
+        <div class="co-card"><span class="co-ar">غزال</span><span class="co-en">Gazal</span></div>
+        <div class="co-card"><span class="co-ar">أجراس</span><span class="co-en">Ajras</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<section class="alt-bg" id="contact">
   <div class="section-inner">
     <div class="fade-in">
-      <div class="section-label">تواصل</div>
-      <h2 class="section-title">تحدث معي</h2>
-      <div class="gold-line"></div>
+      <div class="section-eyebrow" data-ar="تواصل" data-en="Get In Touch">تواصل</div>
+      <h2 class="section-title" data-ar="تحدث معي" data-en="Let's Talk">تحدث معي</h2>
     </div>
     <div class="contact-grid fade-in">
-      <div class="contact-info">
-        <h3>هل تحتاج استشارة مالية؟</h3>
-        <p>سواء كنت تبحث عن مساعدة في الزكاة والضريبة، أو تحليل مالي لشركتك، أو بناء نماذج مالية احترافية — أنا هنا للمساعدة.</p>
+      <div>
+        <p style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--text);margin-bottom:0.8rem" data-ar="هل تحتاج استشارة مالية؟" data-en="Need Financial Advice?">هل تحتاج استشارة مالية؟</p>
+        <p style="font-size:1rem;color:var(--text2);line-height:2" data-ar="سواء كنت تبحث عن مساعدة في الزكاة والضريبة أو تحليل مالي أو تدريب متخصص للفريق — أنا هنا للمساعدة." data-en="Whether you need help with zakat and taxes, financial analysis, or specialized team training — I'm here to help.">سواء كنت تبحث عن مساعدة في الزكاة والضريبة أو تحليل مالي أو تدريب متخصص للفريق — أنا هنا للمساعدة.</p>
         <div class="contact-items">
-          <div class="contact-item"><div class="contact-item-icon">📧</div><span>Mohamed.elattar@email.com</span></div>
-          <div class="contact-item"><div class="contact-item-icon">📱</div><span>+966 5X XXX XXXX</span></div>
-          <div class="contact-item"><div class="contact-item-icon">📍</div><span>المملكة العربية السعودية</span></div>
-          <div class="contact-item"><div class="contact-item-icon">💼</div><span>LinkedIn: Mohamed Elattar</span></div>
+          <a href="mailto:elattar.com@gmail.com" class="contact-item"><div class="ci-icon">📧</div><span>elattar.com@gmail.com</span></a>
+          <a href="https://wa.me/966594926677" target="_blank" class="contact-item"><div class="ci-icon">💬</div><span>WhatsApp: 0594926677</span></a>
+          <a href="tel:+966594926677" class="contact-item"><div class="ci-icon">📱</div><span>+966 594 926 677</span></a>
+          <a href="https://www.linkedin.com/in/mohammed-elattar" target="_blank" class="contact-item"><div class="ci-icon">💼</div><span>linkedin.com/in/mohammed-elattar</span></a>
         </div>
       </div>
       <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-group"><label>الاسم الكامل</label><input type="text" placeholder="اكتب اسمك هنا"></div>
-        <div class="form-group"><label>البريد الإلكتروني</label><input type="email" placeholder="your@email.com" dir="ltr"></div>
-        <div class="form-group"><label>الموضوع</label><input type="text" placeholder="ما الذي تحتاج المساعدة فيه؟"></div>
-        <div class="form-group"><label>الرسالة</label><textarea placeholder="اكتب رسالتك بالتفصيل..."></textarea></div>
-        <button type="submit" class="btn-primary" style="width:100%;text-align:center">إرسال الرسالة</button>
+        <div class="form-group"><label data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label><input type="text" placeholder="اكتب اسمك هنا"></div>
+        <div class="form-group"><label data-ar="البريد الإلكتروني" data-en="Email Address">البريد الإلكتروني</label><input type="email" placeholder="your@email.com" dir="ltr"></div>
+        <div class="form-group"><label data-ar="الموضوع" data-en="Subject">الموضوع</label><input type="text" placeholder="ما الذي تحتاج المساعدة فيه؟"></div>
+        <div class="form-group"><label data-ar="الرسالة" data-en="Message">الرسالة</label><textarea placeholder="اكتب رسالتك بالتفصيل..."></textarea></div>
+        <button type="submit" class="btn-primary" style="width:100%" data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</button>
       </form>
     </div>
   </div>
 </section>
 
 <footer>
-  <span class="footer-name">Mohamed Elattar · محمد العطار</span>
-  <span class="footer-copy">© 2025 — جميع الحقوق محفوظة</span>
+  <div class="footer-brand">محمد <span>العطار</span> · Mohamed Elattar</div>
+  <div class="footer-links">
+    <a href="mailto:elattar.com@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/mohammed-elattar" target="_blank">LinkedIn</a>
+    <a href="https://wa.me/966594926677" target="_blank">WhatsApp</a>
+  </div>
+  <span class="footer-copy">© 2025</span>
 </footer>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold:0.12});
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 
 function handleSubmit(e){
   e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = '✓ تم الإرسال بنجاح';
-  btn.style.cssText = 'width:100%;background:rgba(201,168,76,0.15);color:#E8C97A;border:0.5px solid rgba(201,168,76,0.4);border-radius:3px;padding:0.75rem;font-family:Cairo,sans-serif;font-size:0.9rem;cursor:pointer';
-  setTimeout(()=>{ btn.textContent='إرسال الرسالة'; btn.style.cssText='width:100%;text-align:center'; e.target.reset(); }, 3000);
+  const btn=e.target.querySelector('button[type="submit"]');
+  const orig=btn.getAttribute('data-ar')||btn.textContent;
+  btn.textContent='✓ تم الإرسال بنجاح';
+  btn.style.background='#059669';
+  setTimeout(()=>{btn.textContent=orig;btn.style.background='';e.target.reset();},3000);
+}
+
+let isEn=false;
+function toggleLang(){
+  isEn=!isEn;
+  const body=document.body,btn=document.getElementById('langToggle');
+  if(isEn){
+    body.classList.add('en');body.setAttribute('dir','ltr');body.setAttribute('lang','en');
+    btn.textContent='AR';
+    document.querySelectorAll('[data-en]').forEach(el=>el.textContent=el.getAttribute('data-en'));
+    document.querySelector('.nav-logo').innerHTML='Mohamed <span>Elattar</span>';
+    document.querySelector('.footer-brand').innerHTML='Mohamed <span>Elattar</span> · محمد العطار';
+    document.querySelectorAll('.form-group input,.form-group textarea').forEach(el=>el.setAttribute('dir','ltr'));
+  } else {
+    body.classList.remove('en');body.setAttribute('dir','rtl');body.setAttribute('lang','ar');
+    btn.textContent='EN';
+    document.querySelectorAll('[data-ar]').forEach(el=>el.textContent=el.getAttribute('data-ar'));
+    document.querySelector('.nav-logo').innerHTML='محمد <span>العطار</span>';
+    document.querySelector('.footer-brand').innerHTML='محمد <span>العطار</span> · Mohamed Elattar';
+    document.querySelectorAll('.form-group input,.form-group textarea').forEach(el=>el.setAttribute('dir','rtl'));
+  }
 }
 </script>
 </body>
