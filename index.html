@@ -467,16 +467,8 @@ function showPDF(key, title, filename){
     cfc:  'https://mohamedelattar87.github.io/cfc.pdf',
     cfm:  'https://mohamedelattar87.github.io/cfm.pdf',
   };
-  if(key === 'cv'){
-    // CV = direct download
-    const a = document.createElement('a');
-    a.href = urls[key];
-    a.download = filename;
-    a.click();
-  } else {
-    // Certificates = open in new tab
-    window.open(urls[key], '_blank');
-  }
+  // Open in new tab (CV downloads automatically, certs display)
+  window.open(urls[key], '_blank');
 }
 function closePDFModal(){}
 // CONTACT FORM — AJAX (no page redirect)
